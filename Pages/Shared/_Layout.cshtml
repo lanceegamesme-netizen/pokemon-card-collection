@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pokémon Card Collection</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" asp-page="/Index">Pokémon Card Collection</a>
+            <nav>
+                <a asp-page="/Index">Home</a>
+                <a asp-page="/Cards/Index">My Cards</a>
+                <a asp-page="/Cards/Create">Add a Card</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+    <footer class="container">
+        <p>Pokémon Card Collection · A beginner Razor Pages project</p>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

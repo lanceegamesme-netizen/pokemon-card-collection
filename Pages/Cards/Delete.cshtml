@@ -1,0 +1,30 @@
+@page "{id:int}"
+@model PokeCardCollection.Pages.Cards.DeleteModel
+@{
+    ViewData["Title"] = "Delete Card";
+}
+<h1>Delete Card</h1>
+@if (Model.Card == null)
+{
+    <p>Card not found.</p>
+}
+else
+{
+    <p>Are you sure you want to delete this card?</p>
+    <div class="delete-card">
+        @if (!string.IsNullOrWhiteSpace(Model.Card.ImageUrl))
+        {
+            <img src="@Model.Card.ImageUrl" alt="@Model.Card.Name card image"
+                 onerror="this.onerror=null;this.src='https://images.pokemontcg.io/base1/58.png';" />
+        }
+        <div>
+            <h2>@Model.Card.Name</h2>
+            <p>@Model.Card.SetName · @Model.Card.Rarity</p>
+        </div>
+    </div>
+    <form method="post">
+        <input type="hidden" asp-for="Card!.Id" />
+        <button type="submit" class="button button-danger">Delete Card</button>
+        <a class="button button-light" asp-page="Index">Cancel</a>
+    </form>
+}

@@ -1,0 +1,57 @@
+@page
+@model PokeCardCollection.Pages.Cards.IndexModel
+@{
+    ViewData["Title"] = "My Cards";
+}
+<div class="page-heading">
+    <div>
+        <h1>My Cards</h1>
+        <p>Cards saved in the local database: @Model.Cards.Count</p>
+    </div>
+    <a class="button" asp-page="Create">Add a Card</a>
+</div>
+
+<form method="get" class="search-form">
+    <label for="searchString">Search by card name</label>
+    <div class="search-row">
+        <input id="searchString" type="text" name="SearchString" value="@Model.SearchString" placeholder="Try Pikachu..." />
+        <button type="submit" class="button">Search</button>
+        <a class="button button-light" asp-page="./Index">Clear</a>
+    </div>
+</form>
+
+@if (Model.Cards.Count == 0)
+{
+    <p>No cards found. Try a different search or add a card.</p>
+}
+else
+{
+    <div class="card-grid">
+        @foreach (var card in Model.Cards)
+        {
+            <article class="card">
+                @if (!string.IsNullOrWhiteSpace(card.ImageUrl))
+                {
+                    <img class="card-image" src="@card.ImageUrl" alt="@card.Name card image"
+                         onerror="this.onerror=null;this.src='https://images.pokemontcg.io/base1/58.png';" />
+                }
+                else
+                {
+                    <div class="no-image">No image added</div>
+                }
+                <div class="card-content">
+                    <h2>@card.Name</h2>
+                    <p><strong>Set:</strong> @card.SetName</p>
+                    <p><strong>Rarity:</strong> @card.Rarity</p>
+                    <p><strong>Condition:</strong> @card.Condition</p>
+                    <p><strong>Est. price:</strong> QAR $@card.EstimatedPrice.ToString("0.00")</p>
+                    <div class="card-links">
+                        <a asp-page="./Details" asp-route-id="@card.Id">Details</a>
+                        <a asp-page="./Edit" asp-route-id="@card.Id">Edit</a>
+                        <a asp-page="./Delete" asp-route-id="@card.Id">Delete</a>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+}

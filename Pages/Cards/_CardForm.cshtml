@@ -1,0 +1,53 @@
+@model PokeCardCollection.Models.PokemonCard
+<div asp-validation-summary="ModelOnly" class="validation"></div>
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name" class="validation"></span>
+</div>
+<div class="form-group">
+    <label asp-for="SetName"></label>
+    <input asp-for="SetName" />
+    <span asp-validation-for="SetName" class="validation"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Type"></label>
+    <select asp-for="Type">
+        <option>Pokémon</option>
+        <option>Trainer</option>
+        <option>Energy</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Rarity"></label>
+    <select asp-for="Rarity">
+        <option>Common</option>
+        <option>Uncommon</option>
+        <option>Rare</option>
+        <option>Holo Rare</option>
+        <option>Ultra Rare</option>
+        <option>Illustration Rare</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Condition"></label>
+    <select asp-for="Condition">
+        <option>Near Mint</option>
+        <option>Lightly Played</option>
+        <option>Moderately Played</option>
+        <option>Heavily Played</option>
+        <option>Damaged</option>
+        <option>Good</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="EstimatedPrice"></label>
+    <input asp-for="EstimatedPrice" />
+    <span asp-validation-for="EstimatedPrice" class="validation"></span>
+</div>
+<div class="form-group">
+    <label asp-for="ImageUrl"></label>
+    <input asp-for="ImageUrl" placeholder="https://..." />
+    <span asp-validation-for="ImageUrl" class="validation"></span>
+    <small>Paste a direct image URL. Card photos are loaded from the web.</small>
+</div>

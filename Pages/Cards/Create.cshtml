@@ -1,0 +1,16 @@
+@page
+@model PokeCardCollection.Pages.Cards.CreateModel
+@{
+    ViewData["Title"] = "Add a Card";
+}
+
+<h1>Add a Card</h1>
+<p>Enter the details for a card in your collection.</p>
+
+<form method="post" class="edit-form">
+    <partial name="_CardForm" model="Model.Card" />
+    <div class="form-actions">
+        <button type="submit" class="button">Save Card</button>
+        <a class="button button-light" asp-page="Index">Cancel</a>
+    </div>
+</form>

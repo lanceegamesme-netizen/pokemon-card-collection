@@ -1,0 +1,17 @@
+@page
+@model PokeCardCollection.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+<section class="welcome">
+    <h1>My Pokémon Card Collection</h1>
+    <p>A simple place to keep track of the Pokémon cards I own.</p>
+    <a class="button" asp-page="/Cards/Index">View my cards</a>
+    <a class="button button-light" asp-page="/Cards/Create">Add a card</a>
+</section>
+
+<section class="intro">
+    <h2>About this project</h2>
+    <p>This website uses ASP.NET Core Razor Pages and a local SQLite database. You can add, edit, view and remove cards.</p>
+    <p>The example collection includes a few classic cards. You can replace them with your own cards.</p>
+</section>

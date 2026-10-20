@@ -1,0 +1,22 @@
+@page "{id:int}"
+@model PokeCardCollection.Pages.Cards.EditModel
+@{
+    ViewData["Title"] = "Edit Card";
+}
+<h1>Edit Card</h1>
+@if (Model.Card == null)
+{
+    <p>Card not found.</p>
+    <a asp-page="Index">Back to cards</a>
+}
+else
+{
+    <form method="post" class="edit-form">
+        <input type="hidden" asp-for="Card.Id" />
+        <partial name="_CardForm" model="Model.Card" />
+        <div class="form-actions">
+            <button type="submit" class="button">Save Changes</button>
+            <a class="button button-light" asp-page="Index">Cancel</a>
+        </div>
+    </form>
+}

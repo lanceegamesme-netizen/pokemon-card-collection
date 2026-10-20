@@ -1,0 +1,32 @@
+@page "{id:int}"
+@model PokeCardCollection.Pages.Cards.DetailsModel
+@{
+    ViewData["Title"] = "Card Details";
+}
+@if (Model.Card == null)
+{
+    <h1>Card not found</h1>
+    <p>This card may have been removed.</p>
+    <a asp-page="Index">Back to cards</a>
+}
+else
+{
+    <h1>@Model.Card.Name</h1>
+    <div class="details">
+        @if (!string.IsNullOrWhiteSpace(Model.Card.ImageUrl))
+        {
+            <img class="details-image" src="@Model.Card.ImageUrl" alt="@Model.Card.Name card image"
+                 onerror="this.onerror=null;this.src='https://images.pokemontcg.io/base1/58.png';" />
+        }
+        <div>
+            <p><strong>Set:</strong> @Model.Card.SetName</p>
+            <p><strong>Type:</strong> @Model.Card.Type</p>
+            <p><strong>Rarity:</strong> @Model.Card.Rarity</p>
+            <p><strong>Condition:</strong> @Model.Card.Condition</p>
+            <p><strong>Estimated price:</strong> QAR $@Model.Card.EstimatedPrice.ToString("0.00")</p>
+            <p><strong>Card ID:</strong> @Model.Card.Id</p>
+            <a class="button" asp-page="Edit" asp-route-id="@Model.Card.Id">Edit Card</a>
+            <a class="button button-light" asp-page="Index">Back to cards</a>
+        </div>
+    </div>
+}
